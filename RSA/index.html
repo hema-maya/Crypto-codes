@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RSA Algorithm</title>
+</head>
+
+<body>
+
+<h2>RSA Encryption & Decryption</h2>
+
+<form method="POST">
+
+    <label>Prime Number p:</label>
+    <input type="text" name="p"><br><br>
+
+    <label>Prime Number q:</label>
+    <input type="text" name="q"><br><br>
+
+    <label>Public Key e:</label>
+    <input type="text" name="e"><br><br>
+
+    <label>Message:</label>
+    <input type="text" name="message"><br><br>
+
+    <input type="submit" value="Calculate">
+
+</form>
+
+<br>
+
+{% if error %}
+<h3 style="color:red;">{{ error }}</h3>
+{% endif %}
+
+{% if result %}
+
+<h3>Results</h3>
+
+<p><b>n:</b> {{ result.n }}</p>
+<p><b>φ(n):</b> {{ result.phi }}</p>
+
+<p><b>Public Key:</b> {{ result.public_key }}</p>
+<p><b>Private Key:</b> {{ result.private_key }}</p>
+
+<p><b>Encrypted Message:</b> {{ result.encrypted }}</p>
+<p><b>Decrypted Message:</b> {{ result.decrypted }}</p>
+
+<h3>Intermediate Steps</h3>
+
+<pre>
+{{ result.steps }}
+</pre>
+
+{% endif %}
+
+</body>
+</html>
