@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AES Step-by-Step Generator</title>
+    <style>
+        body { font-family: monospace; background-color: #f4f4f4; padding: 20px; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input { width: 350px; padding: 8px; margin-bottom: 10px; font-family: monospace; }
+        pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        h2 { color: #333; }
+        .btn { background: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AES-128 Key Generation & Encryption</h2>
+        <form method="POST">
+            <label>Master Key (32 Hex Characters):</label><br>
+            <input type="text" name="key" value="2b7e151628aed2a6abf7158809cf4f3c" required><br>
+            
+            <label>Plaintext (32 Hex Characters):</label><br>
+            <input type="text" name="plain" value="6bc1bee22e409f96e93d7e117393172a" required><br>
+            
+            <button type="submit" class="btn">Generate & Encrypt</button>
+        </form>
+
+        {% if result %}
+        <h3>Detailed Output Log:</h3>
+        <pre>{% for line in result %}{{ line }}
+{% endfor %}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
