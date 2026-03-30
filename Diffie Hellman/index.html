@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Diffie-Hellman Key Exchange</title>
+</head>
+
+<body>
+
+<h2>Diffie-Hellman Algorithm</h2>
+
+<form method="POST">
+
+Prime Number (p):
+<input type="text" name="p"><br><br>
+
+Primitive Root (g):
+<input type="text" name="g"><br><br>
+
+Alice Private Key (a):
+<input type="text" name="a"><br><br>
+
+Bob Private Key (b):
+<input type="text" name="b"><br><br>
+
+<input type="submit" value="Calculate">
+
+</form>
+
+<br>
+
+{% if error %}
+<h3 style="color:red;">{{ error }}</h3>
+{% endif %}
+
+{% if result %}
+
+<h3>Results</h3>
+
+<p><b>Alice Public Key (A):</b> {{ result.A }}</p>
+<p><b>Bob Public Key (B):</b> {{ result.B }}</p>
+
+<p><b>Alice Shared Key:</b> {{ result.key_alice }}</p>
+<p><b>Bob Shared Key:</b> {{ result.key_bob }}</p>
+
+<h3>Intermediate Steps</h3>
+
+<pre>
+{{ result.steps }}
+</pre>
+
+{% endif %}
+
+</body>
+</html>
