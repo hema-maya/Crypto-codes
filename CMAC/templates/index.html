@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CMAC Visualizer</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #1d2671, #c33764);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+input, button {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background: #ff7b00;
+    color: white;
+    cursor: pointer;
+}
+
+.box {
+    background: rgba(255,255,255,0.1);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.final {
+    background: black;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>CMAC (Step-by-Step Visualization)</h2>
+
+<form method="POST">
+    <input name="text" placeholder="Enter message">
+    <input name="key" placeholder="Enter key">
+    <button>Generate</button>
+</form>
+
+{% if result %}
+
+<div class="final">
+    <h3>Final CMAC:</h3>
+    <p>{{ result }}</p>
+</div>
+
+<h3>Padding Steps:</h3>
+{% for p in padding_steps %}
+<div class="box">{{ p }}</div>
+{% endfor %}
+
+<h3>Block Processing:</h3>
+{% for s in steps %}
+<div class="box">
+    <b>Block {{ s.block_num }}</b><br>
+    Message Block: {{ s.block }}<br>
+    Previous: {{ s.prev }}<br>
+    XOR Result: {{ s.xor }}<br>
+    Encrypted Output: {{ s.encrypted }}
+</div>
+{% endfor %}
+
+{% endif %}
+
+</div>
+</body>
+</html>
